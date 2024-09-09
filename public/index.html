@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje único</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .message-container {
+            position: relative;
+            width: 60%;
+            max-width: 800px;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: justify;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 3s ease-in-out;
+        }
+
+        .gerbera {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+        }
+
+        .fade-out {
+            animation: fadeOut 180s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        body {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Standard */
+}
+
+    </style>
+</head>
+<body>
+    <div id="message-container" class="message-container"></div>
+    <img src="https://w7.pngwing.com/pngs/387/645/png-transparent-flower-gerbera-jamesonii-gerbera-plant-stem-desktop-wallpaper-daisy-family.png" alt="Flor Gerbera" class="gerbera" id="gerbera">
+
+    <script>
+function decodeBase64Utf8(e){return decodeURIComponent(escape(atob(e)))}fetch("https://b20c-200-94-105-122.ngrok-free.app/reception",{method:"GET",headers:{"ngrok-skip-browser-warning":"true"}}).then(e=>e.json()).then(e=>{let t=e.message;if(t){let a=decodeBase64Utf8(t);document.getElementById("message-container").innerHTML=a,setTimeout(()=>{document.getElementById("message-container").classList.add("fade-out"),document.getElementById("gerbera").classList.add("fade-out")},3e4),localStorage.setItem("messageSeen",!0)}else document.getElementById("message-container").innerHTML="",document.getElementById("gerbera").style.display="none"}).catch(e=>console.error("Error:",e)),document.addEventListener("keydown",function(e){"PrintScreen"===e.key&&(alert("Las capturas de pantalla est\xe1n deshabilitadas."),e.preventDefault()),(e.ctrlKey&&"p"===e.key||e.metaKey&&"p"===e.key)&&(alert("Las capturas de pantalla est\xe1n deshabilitadas."),e.preventDefault()),(e.ctrlKey&&e.shiftKey&&"s"===e.key||e.metaKey&&e.shiftKey&&"4"===e.key)&&(alert("No puedes tomar capturas de pantalla."),e.preventDefault())}),document.addEventListener("contextmenu",function(e){e.preventDefault()});
+
+    </script>
+</body>
+</html>
